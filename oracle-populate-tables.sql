@@ -140,3 +140,33 @@ INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
 VALUES (10, 'Evelyn Lee', TO_DATE('1980-05-30', 'YYYY-MM-DD'), 1234509876, 'Ophthalmology');
 
 -- NURSES --------------------------------------------------------------------------
+INSERT INTO NURSE (sID, name, birth_day, phone, shift) 
+VALUES (11, 'Emily Adams', TO_DATE('1987-11-30', 'YYYY-MM-DD'), 1234567890, 'Morning');
+
+INSERT INTO NURSE (sID, name, birth_day, phone, shift) 
+VALUES (12, 'Daniel Lee', TO_DATE('1992-04-15', 'YYYY-MM-DD'), 2345678901, 'Evening');
+
+INSERT INTO NURSE (sID, name, birth_day, phone, shift) 
+VALUES (13, 'Jessica Kim', TO_DATE('1985-09-20', 'YYYY-MM-DD'), 3456789012, 'Night');
+
+INSERT INTO NURSE (sID, name, birth_day, phone, shift) 
+VALUES (14, 'Oliver Chen', TO_DATE('1990-06-05', 'YYYY-MM-DD'), 4567890123, 'Morning');
+
+INSERT INTO NURSE (sID, name, birth_day, phone, shift) 
+VALUES (15, 'Sophia Patel', TO_DATE('1988-01-01', 'YYYY-MM-DD'), 5678901234, 'Evening');
+
+-- WARDBOYS --------------------------------------------------------------------------
+INSERT INTO WARD_BOY (sID, name, birth_day, phone, duty)
+VALUES (16, 'David Johnson', TO_DATE('1990-06-25', 'YYYY-MM-DD'), 1234567890, 'Cleaning');
+
+INSERT INTO WARD_BOY (sID, name, birth_day, phone, duty)
+VALUES (17, 'Emily Brown', TO_DATE('1985-03-12', 'YYYY-MM-DD'), 2345678901, 'Room Care');
+
+INSERT INTO WARD_BOY (sID, name, birth_day, phone, duty)
+VALUES (18, 'William Davis', TO_DATE('1988-08-15', 'YYYY-MM-DD'), 3456789012, 'Laundry');
+
+INSERT INTO WARD_BOY (sID, name, birth_day, phone, duty)
+VALUES (19, 'Sophia Wilson', TO_DATE('1992-01-06', 'YYYY-MM-DD'), 4567890123, 'Stock Management');
+
+INSERT INTO WARD_BOY (sID, name, birth_day, phone, duty)
+VALUES (20, 'Benjamin Garcia', TO_DATE('1986-11-22', 'YYYY-MM-DD'), 5678901234, 'Assisting Nurses');
