@@ -51,28 +51,30 @@ CREATE TABLE WARD_BOY (
 );
 
 CREATE TABLE ROOM (
-	rID INT NOT NULL,
-    is_available NUMBER(1) DEFAULT 1 NOT NULL CHECK (is_available IN (0, 1)),
-    capacity INT NOT NULL,
-    name VARCHAR(50) NOT NULL,
+    rID INT,
+    roomName VARCHAR(50),
+    capacity INT,
+    availability VARCHAR(10) NOT NULL CONSTRAINT availability_check CHECK (availability IN ('available', 'unavailable')),
     PRIMARY KEY (rID)
 );
 
 CREATE TABLE CLINICAL_LAB(
-	rID INT NOT NULL,
-	PRIMARY KEY (rID),
-    FOREIGN KEY (rID) REFERENCES ROOM(rID)
+    rID INT,  
+    room_type VARCHAR(50),
+    FOREIGN KEY (rID) REFERENCES ROOM(rID),
+    PRIMARY KEY (rID)
 );
 
 CREATE TABLE OPERATION_THEATER(
-	rID INT NOT NULL,
-	PRIMARY KEY (rID),
-    FOREIGN KEY (rID) REFERENCES ROOM(rID)
+    rID INT, 
+    room_type VARCHAR(50),
+    FOREIGN KEY (rID) REFERENCES ROOM(rID),
+    PRIMARY KEY (rID)
 );
 
 CREATE TABLE ICU(
-	rID INT NOT NULL,
-	PRIMARY KEY (rID),
+    rID INT PRIMARY KEY,  
+    room_type VARCHAR(50),
     FOREIGN KEY (rID) REFERENCES ROOM(rID)
 );
 

@@ -84,25 +84,25 @@ INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, d
 VALUES (28, 'Avery Smith', TO_DATE('1995-09-16', 'YYYY-MM-DD'), 9012345678, '789 Chestnut St', 'Sprained ankle', 'Bandage', TO_DATE('2023-05-05', 'YYYY-MM-DD'), TO_DATE('2023-05-09', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (22, 'Emily Johnson', TO_DATE('1997-08-12', 'YYYY-MM-DD'), 3456789012, '789 Elm St', 'Appendicitis', 'Surgery', TO_DATE('2023-04-01', 'YYYY-MM-DD'), TO_DATE('2023-04-05', 'YYYY-MM-DD'));
+VALUES (29, 'Emily Johnson', TO_DATE('1997-08-12', 'YYYY-MM-DD'), 3456789012, '789 Elm St', 'Appendicitis', 'Surgery', TO_DATE('2023-04-01', 'YYYY-MM-DD'), TO_DATE('2023-04-05', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (23, 'Robert Williams', TO_DATE('1985-02-22', 'YYYY-MM-DD'), 4567890123, '456 Oak St', 'Gallstones', 'Surgery', TO_DATE('2023-03-21', 'YYYY-MM-DD'), TO_DATE('2023-03-25', 'YYYY-MM-DD'));
+VALUES (30, 'Robert Williams', TO_DATE('1985-02-22', 'YYYY-MM-DD'), 4567890123, '456 Oak St', 'Gallstones', 'Surgery', TO_DATE('2023-03-21', 'YYYY-MM-DD'), TO_DATE('2023-03-25', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (24, 'Megan Davis', TO_DATE('1992-11-04', 'YYYY-MM-DD'), 5678901234, '234 Maple St', 'Hernia', 'Surgery', TO_DATE('2023-02-14', 'YYYY-MM-DD'), TO_DATE('2023-02-18', 'YYYY-MM-DD'));
+VALUES (31, 'Megan Davis', TO_DATE('1992-11-04', 'YYYY-MM-DD'), 5678901234, '234 Maple St', 'Hernia', 'Surgery', TO_DATE('2023-02-14', 'YYYY-MM-DD'), TO_DATE('2023-02-18', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (25, 'William Wilson', TO_DATE('1979-06-27', 'YYYY-MM-DD'), 6789012345, '345 Pine St', 'Kidney Stones', 'Surgery', TO_DATE('2023-01-05', 'YYYY-MM-DD'), TO_DATE('2023-01-09', 'YYYY-MM-DD'));
+VALUES (32, 'William Wilson', TO_DATE('1979-06-27', 'YYYY-MM-DD'), 6789012345, '345 Pine St', 'Kidney Stones', 'Surgery', TO_DATE('2023-01-05', 'YYYY-MM-DD'), TO_DATE('2023-01-09', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (26, 'Sophia Brown', TO_DATE('1988-09-17', 'YYYY-MM-DD'), 7890123456, '567 Birch St', 'Appendicitis', 'Surgery', TO_DATE('2022-12-02', 'YYYY-MM-DD'), TO_DATE('2022-12-06', 'YYYY-MM-DD'));
+VALUES (33, 'Sophia Brown', TO_DATE('1988-09-17', 'YYYY-MM-DD'), 7890123456, '567 Birch St', 'Appendicitis', 'Surgery', TO_DATE('2022-12-02', 'YYYY-MM-DD'), TO_DATE('2022-12-06', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (23, 'Alice Johnson', TO_DATE('1980-07-12', 'YYYY-MM-DD'), 3456789012, '789 Oak St', 'Heart Attack', 'ICU', TO_DATE('2023-04-01', 'YYYY-MM-DD'), TO_DATE('2023-04-10', 'YYYY-MM-DD'));
+VALUES (34, 'Alice Johnson', TO_DATE('1980-07-12', 'YYYY-MM-DD'), 3456789012, '789 Oak St', 'Heart Attack', 'ICU', TO_DATE('2023-04-01', 'YYYY-MM-DD'), TO_DATE('2023-04-10', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (24, 'Benjamin Franklin', TO_DATE('1975-12-20', 'YYYY-MM-DD'), 4567890123, '456 Elm St', 'Severe Pneumonia', 'ICU', TO_DATE('2023-03-20', 'YYYY-MM-DD'), TO_DATE('2023-04-05', 'YYYY-MM-DD'));
+VALUES (35, 'Benjamin Franklin', TO_DATE('1975-12-20', 'YYYY-MM-DD'), 4567890123, '456 Elm St', 'Severe Pneumonia', 'ICU', TO_DATE('2023-03-20', 'YYYY-MM-DD'), TO_DATE('2023-04-05', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (25, 'Catherine Lee', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 5678901234, '234 Pine St', 'Brain Injury', 'ICU', TO_DATE('2023-04-15', 'YYYY-MM-DD'), TO_DATE('2023-04-30', 'YYYY-MM-DD'));
+VALUES (36, 'Catherine Lee', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 5678901234, '234 Pine St', 'Brain Injury', 'ICU', TO_DATE('2023-04-15', 'YYYY-MM-DD'), TO_DATE('2023-04-30', 'YYYY-MM-DD'));
