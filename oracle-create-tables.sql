@@ -98,6 +98,7 @@ CREATE TABLE BILL (
     duration INT NOT NULL,
     due_day DATE NOT NULL,
     price INT NOT NULL,
+    paid VARCHAR(20) NOT NULL DEFAULT 'no' CONSTRAINT paid_check CHECK (paid IN ('yes', 'no')),
     PRIMARY KEY (bID),
     FOREIGN KEY (pID) REFERENCES PATIENT(pID)
 );
@@ -114,9 +115,12 @@ CREATE TABLE HANDLE (
 CREATE TABLE ADMITTED_TO (
 	rID INT,
     pID INT,
-    PRIMARY KEY (rID, pID),
+    bID INT DEFAULT bill_seq.NEXTVAL,
+    PRIMARY KEY (rID, pID, bID),
 	FOREIGN KEY (rID) REFERENCES ROOM(rID),
-	FOREIGN KEY (pID) REFERENCES PATIENT(pID)
+	FOREIGN KEY (pID) REFERENCES PATIENT(pID),
+    FOREIGN KEY (bID) REFERENCES BILL(bID)
+
 );
 
 CREATE TABLE MAINTAIN (
@@ -151,7 +155,7 @@ BEGIN
     v_price := v_duration * 60;
 
     INSERT INTO BILL (bID, pID, duration, due_day, price)
-    VALUES (bill_seq.nextval, :NEW.pID, v_duration, v_day_out + 7, v_price);
+    VALUES (:NEW.bID, :NEW.pID, v_duration, v_day_out + 7, v_price);
 END;
 /
 
