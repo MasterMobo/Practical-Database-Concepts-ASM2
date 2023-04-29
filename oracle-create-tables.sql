@@ -58,7 +58,7 @@ CREATE TABLE ROOM (
     PRIMARY KEY (rID)
 );
 
-CREATE TABLE COMMON_ROOM(
+CREATE TABLE CLINICAL_LAB(
 	rID INT NOT NULL,
 	PRIMARY KEY (rID),
     FOREIGN KEY (rID) REFERENCES ROOM(rID)
@@ -76,9 +76,13 @@ CREATE TABLE ICU(
     FOREIGN KEY (rID) REFERENCES ROOM(rID)
 );
 
+-- CREATE OR REPLACE SEQUENCE bill_seq
+-- START WITH 1
+-- INCREMENT BY 1;
+
 CREATE TABLE BILL (
 -- FIXED BUT NEEDS RECHECKING
-	bID INT,
+	bID INT DEFAULT bill_seq.NEXTVAL,
     pID INT,
     duration INT NOT NULL,
     due_day DATE NOT NULL,
@@ -105,6 +109,23 @@ CREATE TABLE ADMITTED_TO (
 	FOREIGN KEY (pID) REFERENCES PATIENT(pID),
     FOREIGN KEY (bID) REFERENCES BILL(bID)
 );
+
+-- CREATE OR REPLACE TRIGGER insert_bill
+-- AFTER INSERT ON ADMITTED_TO
+-- FOR EACH ROW
+-- DECLARE
+--     v_duration NUMBER;
+--     v_price NUMBER;
+--     v_day_in DATE;
+--     v_day_out DATE;
+-- BEGIN
+--     SELECT day_in, day_out INTO v_day_in, v_day_out FROM PATIENT WHERE pID = :NEW.pID;
+--     v_duration := (v_day_out - v_day_in);
+--     v_price := v_duration * 60;
+
+--     INSERT INTO BILL (bID, pID, duration, due_day, price)
+--     VALUES (bill_seq.nextval, :NEW.pID, v_duration, v_day_out + 7, v_price);
+-- END;
 
 -- NEDD TO ADD MAINTAIN AND TAKE_CARE
 
