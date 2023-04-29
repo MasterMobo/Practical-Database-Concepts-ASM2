@@ -1,114 +1,108 @@
 -- PATIENT ------------------------------------------------------------------------------------------------------------
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (1, 'John Smith', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 1234567890, '123 Main St', 'Flu', 'Antibiotics'),
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (1, 'John Smith', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 1234567890, '123 Main St', 'Flu', 'Antibiotics', TO_DATE('2023-03-01', 'YYYY-MM-DD'), TO_DATE('2023-03-05', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (2, 'Jane Doe', TO_DATE('1985-07-10', 'YYYY-MM-DD'), 2345678901, '456 Oak Ave', 'Headache', 'Painkillers');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (2, 'Mary Johnson', TO_DATE('1985-09-20', 'YYYY-MM-DD'), 2345678901, '456 Elm St', 'Pneumonia', 'Antibiotics', TO_DATE('2022-08-10', 'YYYY-MM-DD'), TO_DATE('2022-08-15', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (3, 'Bob Johnson', TO_DATE('1975-11-28', 'YYYY-MM-DD'), 3456789012, '789 Maple Rd', 'Diabetes', 'Insulin');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (3, 'David Lee', TO_DATE('1997-01-01', 'YYYY-MM-DD'), 3456789012, '789 Oak St', 'Appendicitis', 'Surgery', TO_DATE('2022-07-20', 'YYYY-MM-DD'), TO_DATE('2022-07-25', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (4, 'Samantha Lee', TO_DATE('2000-03-05', 'YYYY-MM-DD'), 4567890123, '321 Pine St', 'Asthma', 'Inhaler');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (4, 'Emily Chen', TO_DATE('1980-12-01', 'YYYY-MM-DD'), 4567890123, '567 Pine St', 'Migraine', 'Painkillers', TO_DATE('2022-09-05', 'YYYY-MM-DD'), TO_DATE('2022-09-10', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (5, 'Michael Chen', TO_DATE('1993-09-22', 'YYYY-MM-DD'), 5678901234, '654 Elm St', 'Allergies', 'Antihistamines');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (5, 'Daniel Kim', TO_DATE('1993-06-18', 'YYYY-MM-DD'), 5678901234, '234 Maple St', 'Asthma', 'Inhaler', TO_DATE('2022-06-15', 'YYYY-MM-DD'), TO_DATE('2022-06-20', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (6, 'Karen Kim', TO_DATE('1982-01-12', 'YYYY-MM-DD'), 6789012345, '987 Cedar Ave', 'Migraine', 'Migraine medicine');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (6, 'Sarah Park', TO_DATE('1989-11-05', 'YYYY-MM-DD'), 6789012345, '789 Oak St', 'Broken Arm', 'Cast', TO_DATE('2022-05-20', 'YYYY-MM-DD'), TO_DATE('2022-06-05', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (7, 'David Lee', TO_DATE('1978-06-30', 'YYYY-MM-DD'), 7890123456, '246 Oak St', 'High blood pressure', 'Blood pressure medication');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (7, 'Ryan Lee', TO_DATE('2000-02-29', 'YYYY-MM-DD'), 7890123456, '123 Elm St', 'Flu', 'Antibiotics', TO_DATE('2022-04-15', 'YYYY-MM-DD'), TO_DATE('2022-04-20', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (8, 'Amy Chen', TO_DATE('1995-12-18', 'YYYY-MM-DD'), 8901234567, '369 Maple Ave', 'Depression', 'Antidepressants');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (8, 'Jennifer Smith', TO_DATE('1978-07-04', 'YYYY-MM-DD'), 8901234567, '456 Oak St', 'Heart Attack', 'Surgery', TO_DATE('2022-03-10', 'YYYY-MM-DD'), TO_DATE('2022-03-15', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (9, 'Steven Park', TO_DATE('2001-08-06', 'YYYY-MM-DD'), 9012345678, '135 Pine Rd', 'Acne', 'Acne medication');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (9, 'Steven Park', TO_DATE('2001-08-06', 'YYYY-MM-DD'), 9012345678, '135 Pine Rd', 'Acne', 'Acne medication', TO_DATE('2022-09-05', 'YYYY-MM-DD'), TO_DATE('2022-09-10', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (10, 'Rachel Kim', TO_DATE('1989-04-23', 'YYYY-MM-DD'), 0123456789, '579 Cedar St', 'Anxiety', 'Anxiety medication');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (10, 'Rachel Kim', TO_DATE('1989-04-23', 'YYYY-MM-DD'), 0123456789, '579 Cedar St', 'Anxiety', 'Anxiety medication', TO_DATE('2022-08-10', 'YYYY-MM-DD'), TO_DATE('2022-08-15', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (11, 'Brian Lee', TO_DATE('1996-02-14', 'YYYY-MM-DD'), 2345678901, '567 Main St', 'Flu', 'Antibiotics');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (11, 'Brian Lee', TO_DATE('1996-02-14', 'YYYY-MM-DD'), 2345678901, '567 Main St', 'Flu', 'Antibiotics', TO_DATE('2022-05-20', 'YYYY-MM-DD'), TO_DATE('2022-06-05', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (12, 'Linda Wang', TO_DATE('1983-06-22', 'YYYY-MM-DD'), 3456789012, '890 Oak Ave', 'Headache', 'Painkillers');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (12, 'Emma Davis', TO_DATE('1987-09-20', 'YYYY-MM-DD'), 2345678901, '456 Pine St', 'Pneumonia', 'Antibiotics', TO_DATE('2023-03-25', 'YYYY-MM-DD'), TO_DATE('2023-04-01', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (13, 'Kevin Kim', TO_DATE('1974-10-03', 'YYYY-MM-DD'), 4567890123, '123 Maple Rd', 'Diabetes', 'Insulin');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (13, 'Liam Wilson', TO_DATE('1985-06-02', 'YYYY-MM-DD'), 3456789012, '789 Oak St', 'COVID-19', 'Antiviral medication', TO_DATE('2023-03-29', 'YYYY-MM-DD'), TO_DATE('2023-04-15', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (14, 'Michelle Wu', TO_DATE('2002-04-19', 'YYYY-MM-DD'), 5678901234, '456 Pine St', 'Asthma', 'Inhaler');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (14, 'Ava Brown', TO_DATE('1993-02-14', 'YYYY-MM-DD'), 4567890123, '234 Elm St', 'Migraine', 'Pain relievers', TO_DATE('2023-04-05', 'YYYY-MM-DD'), TO_DATE('2023-04-08', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (15, 'Thomas Nguyen', TO_DATE('1991-11-17', 'YYYY-MM-DD'), 6789012345, '789 Elm St', 'Allergies', 'Antihistamines');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (15, 'Noah Garcia', TO_DATE('1978-11-29', 'YYYY-MM-DD'), 5678901234, '567 Maple St', 'Heart disease', 'Beta blockers', TO_DATE('2023-04-10', 'YYYY-MM-DD'), TO_DATE('2023-04-20', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (16, 'Cindy Kim', TO_DATE('1987-05-30', 'YYYY-MM-DD'), 7890123456, '246 Cedar Ave', 'Migraine', 'Migraine medicine');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (16, 'Sophia Rodriguez', TO_DATE('1982-03-18', 'YYYY-MM-DD'), 6789012345, '890 Birch St', 'Appendicitis', 'Surgery', TO_DATE('2023-04-11', 'YYYY-MM-DD'), TO_DATE('2023-04-14', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (17, 'Jason Lee', TO_DATE('1979-12-25', 'YYYY-MM-DD'), 8901234567, '369 Oak St', 'High blood pressure', 'Blood pressure medication');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (17, 'Jackson Wilson', TO_DATE('1998-08-12', 'YYYY-MM-DD'), 7890123456, '123 Cedar St', 'Asthma', 'Bronchodilators', TO_DATE('2023-04-12', 'YYYY-MM-DD'), TO_DATE('2023-04-18', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (18, 'Jennifer Chen', TO_DATE('1994-08-13', 'YYYY-MM-DD'), 9012345678, '135 Maple Ave', 'Depression', 'Antidepressants');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (18, 'Olivia Hernandez', TO_DATE('1980-01-06', 'YYYY-MM-DD'), 8901234567, '456 Oak St', 'Diabetes', 'Insulin', TO_DATE('2023-04-14', 'YYYY-MM-DD'), TO_DATE('2023-04-25', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (19, 'Ryan Park', TO_DATE('2003-01-31', 'YYYY-MM-DD'), 0123456789, '579 Pine Rd', 'Acne', 'Acne medication');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (19, 'Ryan Park', TO_DATE('2003-01-31', 'YYYY-MM-DD'), 0123456789, '579 Pine Rd', 'Acne', 'Acne medication', TO_DATE('2023-04-10', 'YYYY-MM-DD'), TO_DATE('2023-04-20', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (20, 'Grace Kim', TO_DATE('1990-09-05', 'YYYY-MM-DD'), 1234567890, '123 Cedar St', 'Anxiety', 'Anxiety medication');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (20, 'Grace Kim', TO_DATE('1990-09-05', 'YYYY-MM-DD'), 1234567890, '123 Cedar St', 'Anxiety', 'Anxiety medication', TO_DATE('2023-04-30', 'YYYY-MM-DD'), TO_DATE('2023-05-02', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (21, 'Matthew Lee', TO_DATE('1995-03-28', 'YYYY-MM-DD'), 2345678901, '567 Main St', 'Flu', 'Antibiotics');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (21, 'Matthew Lee', TO_DATE('1995-03-28', 'YYYY-MM-DD'), 2345678901, '567 Main St', 'Flu', 'Antibiotics', TO_DATE('2023-05-05', 'YYYY-MM-DD'), TO_DATE('2023-05-09', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (22, 'Sarah Davis', TO_DATE('1980-06-10', 'YYYY-MM-DD'), 3456789012, '789 Pine Ave', 'Back pain', 'Painkillers');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (22, 'Emily Lee', TO_DATE('1999-09-12', 'YYYY-MM-DD'), 3456789012, '789 Elm St', 'Asthma', 'Inhaler', TO_DATE('2023-04-29', 'YYYY-MM-DD'), TO_DATE('2023-05-03', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (23, 'Andrew Kim', TO_DATE('1991-09-15', 'YYYY-MM-DD'), 4567890123, '987 Cedar St', 'Fever', 'Rest');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (23, 'William Chen', TO_DATE('1985-12-01', 'YYYY-MM-DD'), 4567890123, '234 Oak St', 'Migraine', 'Painkillers', TO_DATE('2023-04-30', 'YYYY-MM-DD'), TO_DATE('2023-05-02', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (24, 'Jennifer Liu', TO_DATE('1985-12-25', 'YYYY-MM-DD'), 5678901234, '246 Elm St', 'Migraine', 'Migraine medicine');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (24, 'Sophia Kim', TO_DATE('2000-07-22', 'YYYY-MM-DD'), 5678901234, '345 Maple St', 'Broken arm', 'Cast', TO_DATE('2023-05-01', 'YYYY-MM-DD'), TO_DATE('2023-05-05', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (25, 'James Park', TO_DATE('1998-05-22', 'YYYY-MM-DD'), 6789012345, '369 Maple Ave', 'Asthma', 'Inhaler');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (25, 'Oliver Rodriguez', TO_DATE('1977-01-18', 'YYYY-MM-DD'), 6789012345, '456 Pine St', 'Diabetes', 'Insulin', TO_DATE('2023-05-02', 'YYYY-MM-DD'), TO_DATE('2023-05-06', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (26, 'Samantha Kim', TO_DATE('2002-02-01', 'YYYY-MM-DD'), 7890123456, '135 Pine Rd', 'Acne', 'Acne medication');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (26, 'Evelyn Park', TO_DATE('1992-11-30', 'YYYY-MM-DD'), 7890123456, '567 Cedar St', 'Pneumonia', 'Antibiotics', TO_DATE('2023-05-03', 'YYYY-MM-DD'), TO_DATE('2023-05-07', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (27, 'Adam Johnson', TO_DATE('1983-07-18', 'YYYY-MM-DD'), 8901234567, '579 Cedar St', 'Diabetes', 'Insulin');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (27, 'James Lee', TO_DATE('1980-03-04', 'YYYY-MM-DD'), 8901234567, '678 Walnut St', 'Flu', 'Antibiotics', TO_DATE('2023-05-04', 'YYYY-MM-DD'), TO_DATE('2023-05-08', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (28, 'Grace Lee', TO_DATE('1996-10-08', 'YYYY-MM-DD'), 9012345678, '123 Oak Ave', 'Allergies', 'Antihistamines');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (28, 'Avery Smith', TO_DATE('1995-09-16', 'YYYY-MM-DD'), 9012345678, '789 Chestnut St', 'Sprained ankle', 'Bandage', TO_DATE('2023-05-05', 'YYYY-MM-DD'), TO_DATE('2023-05-09', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (29, 'David Chen', TO_DATE('1989-04-14', 'YYYY-MM-DD'), 0123456789, '456 Maple Rd', 'Headache', 'Painkillers');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (22, 'Emily Johnson', TO_DATE('1997-08-12', 'YYYY-MM-DD'), 3456789012, '789 Elm St', 'Appendicitis', 'Surgery', TO_DATE('2023-04-01', 'YYYY-MM-DD'), TO_DATE('2023-04-05', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (30, 'Olivia Kim', TO_DATE('1979-11-30', 'YYYY-MM-DD'), 1234567890, '789 Pine St', 'Anxiety', 'Anxiety medication');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (23, 'Robert Williams', TO_DATE('1985-02-22', 'YYYY-MM-DD'), 4567890123, '456 Oak St', 'Gallstones', 'Surgery', TO_DATE('2023-03-21', 'YYYY-MM-DD'), TO_DATE('2023-03-25', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (31, 'Emily Wong', TO_DATE('1988-11-14', 'YYYY-MM-DD'), 1234567890, '123 Main St', 'Appendicitis', 'Surgery');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (24, 'Megan Davis', TO_DATE('1992-11-04', 'YYYY-MM-DD'), 5678901234, '234 Maple St', 'Hernia', 'Surgery', TO_DATE('2023-02-14', 'YYYY-MM-DD'), TO_DATE('2023-02-18', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (32, 'Daniel Kim', TO_DATE('1990-09-22', 'YYYY-MM-DD'), 2345678901, '456 Oak Ave', 'Tumor', 'Surgery');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (25, 'William Wilson', TO_DATE('1979-06-27', 'YYYY-MM-DD'), 6789012345, '345 Pine St', 'Kidney Stones', 'Surgery', TO_DATE('2023-01-05', 'YYYY-MM-DD'), TO_DATE('2023-01-09', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (33, 'Sophie Chen', TO_DATE('1975-06-28', 'YYYY-MM-DD'), 3456789012, '789 Maple Rd', 'Heart disease', 'Heart surgery');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (26, 'Sophia Brown', TO_DATE('1988-09-17', 'YYYY-MM-DD'), 7890123456, '567 Birch St', 'Appendicitis', 'Surgery', TO_DATE('2022-12-02', 'YYYY-MM-DD'), TO_DATE('2022-12-06', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (34, 'William Lee', TO_DATE('1985-03-15', 'YYYY-MM-DD'), 4567890123, '321 Pine St', 'Cancer', 'Chemotherapy');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (23, 'Alice Johnson', TO_DATE('1980-07-12', 'YYYY-MM-DD'), 3456789012, '789 Oak St', 'Heart Attack', 'ICU', TO_DATE('2023-04-01', 'YYYY-MM-DD'), TO_DATE('2023-04-10', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (35, 'Olivia Davis', TO_DATE('1998-05-10', 'YYYY-MM-DD'), 5678901234, '654 Elm St', 'Kidney stones', 'Surgery');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (24, 'Benjamin Franklin', TO_DATE('1975-12-20', 'YYYY-MM-DD'), 4567890123, '456 Elm St', 'Severe Pneumonia', 'ICU', TO_DATE('2023-03-20', 'YYYY-MM-DD'), TO_DATE('2023-04-05', 'YYYY-MM-DD'));
 
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (36, 'Jessica Wang', TO_DATE('1972-09-05', 'YYYY-MM-DD'), 3456789012, '111 Oak Ave', 'Heart attack', 'ICU monitoring');
-
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (37, 'Ryan Rodriguez', TO_DATE('1990-02-14', 'YYYY-MM-DD'), 4567890123, '222 Maple Rd', 'Severe head injury', 'ICU care');
-
-INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment)
-VALUES (38, 'Samantha Patel', TO_DATE('1985-11-28', 'YYYY-MM-DD'), 5678901234, '333 Cedar St', 'Respiratory failure', 'ICU ventilator support');
+INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
+VALUES (25, 'Catherine Lee', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 5678901234, '234 Pine St', 'Brain Injury', 'ICU', TO_DATE('2023-04-15', 'YYYY-MM-DD'), TO_DATE('2023-04-30', 'YYYY-MM-DD'));
