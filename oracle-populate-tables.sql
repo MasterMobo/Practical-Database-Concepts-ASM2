@@ -21,7 +21,7 @@ INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, d
 VALUES (7, 'Ryan Lee', TO_DATE('2000-02-29', 'YYYY-MM-DD'), 7890123456, '123 Elm St', 'Flu', 'Antibiotics', TO_DATE('2022-04-15', 'YYYY-MM-DD'), TO_DATE('2022-04-20', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (8, 'Jennifer Smith', TO_DATE('1978-07-04', 'YYYY-MM-DD'), 8901234567, '456 Oak St', 'Heart Attack', 'Surgery', TO_DATE('2022-03-10', 'YYYY-MM-DD'), TO_DATE('2022-03-15', 'YYYY-MM-DD'));
+VALUES (8, 'Jennifer Smith', TO_DATE('1978-07-04', 'YYYY-MM-DD'), 8901234567, '456 Oak St', 'Flu', 'Antibiotics', TO_DATE('2022-03-10', 'YYYY-MM-DD'), TO_DATE('2022-03-15', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
 VALUES (9, 'Steven Park', TO_DATE('2001-08-06', 'YYYY-MM-DD'), 9012345678, '135 Pine Rd', 'Acne', 'Acne medication', TO_DATE('2022-09-05', 'YYYY-MM-DD'), TO_DATE('2022-09-10', 'YYYY-MM-DD'));
@@ -45,7 +45,7 @@ INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, d
 VALUES (15, 'Noah Garcia', TO_DATE('1978-11-29', 'YYYY-MM-DD'), 5678901234, '567 Maple St', 'Heart disease', 'Beta blockers', TO_DATE('2023-04-10', 'YYYY-MM-DD'), TO_DATE('2023-04-20', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
-VALUES (16, 'Sophia Rodriguez', TO_DATE('1982-03-18', 'YYYY-MM-DD'), 6789012345, '890 Birch St', 'Appendicitis', 'Surgery', TO_DATE('2023-04-11', 'YYYY-MM-DD'), TO_DATE('2023-04-14', 'YYYY-MM-DD'));
+VALUES (16, 'Sophia Rodriguez', TO_DATE('1982-03-18', 'YYYY-MM-DD'), 6789012345, '890 Birch St', 'Acne', 'Acne medication', TO_DATE('2023-04-11', 'YYYY-MM-DD'), TO_DATE('2023-04-14', 'YYYY-MM-DD'));
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
 VALUES (17, 'Jackson Wilson', TO_DATE('1998-08-12', 'YYYY-MM-DD'), 7890123456, '123 Cedar St', 'Asthma', 'Bronchodilators', TO_DATE('2023-04-12', 'YYYY-MM-DD'), TO_DATE('2023-04-18', 'YYYY-MM-DD'));
@@ -170,3 +170,127 @@ VALUES (19, 'Sophia Wilson', TO_DATE('1992-01-06', 'YYYY-MM-DD'), 4567890123, 'S
 
 INSERT INTO WARD_BOY (sID, name, birth_day, phone, duty)
 VALUES (20, 'Benjamin Garcia', TO_DATE('1986-11-22', 'YYYY-MM-DD'), 5678901234, 'Assisting Nurses');
+
+-- CLINICAL LABS --------------------------------------------------------------------------
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (101, 'Lab-A', 10, 'available', 'Blood test');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (102, 'Lab-B', 8, 'available', 'Urine test');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (103, 'Lab-C', 12, 'unavailable', 'MRI scan');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (104, 'Lab-D', 6, 'available', 'X-ray');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (105, 'Lab-E', 14, 'unavailable', 'Ultrasound');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (106, 'Lab-F', 9, 'available', 'Blood test');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (107, 'Lab-G', 11, 'available', 'CT scan');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (108, 'Lab-H', 7, 'available', 'Urine test');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (109, 'Lab-I', 10, 'available', 'X-ray');
+
+INSERT INTO CLINICAL_LAB (rID, name, capacity, availability, lab_type)
+VALUES (110, 'Lab-J', 8, 'unavailable', 'MRI scan');
+
+-- OPERATION THEATERS --------------------------------------------------------------------------
+
+INSERT INTO OPERATION_THEATER (rID, name, capacity, availability, op_type) 
+VALUES (301, 'OT-1', 10, 'available', 'General');
+
+INSERT INTO OPERATION_THEATER (rID, name, capacity, availability, op_type) 
+VALUES (302, 'OT-2', 8, 'available', 'Neuro');
+
+INSERT INTO OPERATION_THEATER (rID, name, capacity, availability, op_type) 
+VALUES (303, 'OT-3', 12, 'unavailable', 'Cardiac');
+
+INSERT INTO OPERATION_THEATER (rID, name, capacity, availability, op_type) 
+VALUES (304, 'OT-4', 6, 'available', 'Ortho');
+
+INSERT INTO OPERATION_THEATER (rID, name, capacity, availability, op_type) 
+VALUES (305, 'OT-5', 15, 'unavailable', 'ENT');
+
+-- ICU --------------------------------------------------------------------------
+INSERT INTO ICU (rID, name, capacity, availability, icu_type) 
+VALUES (201, 'ICU-1', 5, 'available', 'General');
+
+INSERT INTO ICU (rID, name, capacity, availability, icu_type) 
+VALUES (202, 'ICU-2', 5, 'available', 'Cardiac');
+
+INSERT INTO ICU (rID, name, capacity, availability, icu_type) 
+VALUES (203, 'ICU-3', 5, 'available', 'Surgical');
+
+INSERT INTO ICU (rID, name, capacity, availability, icu_type) 
+VALUES (204, 'ICU-4', 5, 'unavailable', 'Neurological');
+
+INSERT INTO ICU (rID, name, capacity, availability, icu_type) 
+VALUES (205, 'ICU-5', 5, 'available', 'Pediatric');
+
+-- MAINTAIN --------------------------------------------------------------------------
+INSERT INTO MAINTAIN (RID, SID) VALUES (101, 16);
+INSERT INTO MAINTAIN (RID, SID) VALUES (102, 17);
+INSERT INTO MAINTAIN (RID, SID) VALUES (103, 18);
+INSERT INTO MAINTAIN (RID, SID) VALUES (104, 19);
+INSERT INTO MAINTAIN (RID, SID) VALUES (105, 20);
+INSERT INTO MAINTAIN (RID, SID) VALUES (106, 16);
+INSERT INTO MAINTAIN (RID, SID) VALUES (107, 17);
+INSERT INTO MAINTAIN (RID, SID) VALUES (108, 18);
+INSERT INTO MAINTAIN (RID, SID) VALUES (109, 19);
+INSERT INTO MAINTAIN (RID, SID) VALUES (110, 20);
+INSERT INTO MAINTAIN (RID, SID) VALUES (201, 16);
+INSERT INTO MAINTAIN (RID, SID) VALUES (202, 17);
+INSERT INTO MAINTAIN (RID, SID) VALUES (203, 18);
+INSERT INTO MAINTAIN (RID, SID) VALUES (204, 19);
+INSERT INTO MAINTAIN (RID, SID) VALUES (205, 20);
+INSERT INTO MAINTAIN (RID, SID) VALUES (301, 16);
+INSERT INTO MAINTAIN (RID, SID) VALUES (302, 17);
+INSERT INTO MAINTAIN (RID, SID) VALUES (303, 18);
+INSERT INTO MAINTAIN (RID, SID) VALUES (304, 19);
+INSERT INTO MAINTAIN (RID, SID) VALUES (305, 20);
+-- takecare ------------------------------------------------------
+INSERT INTO TAKE CARE (PID, SID) VALUES (11, 12);
+INSERT INTO TAKE CARE (PID, SID) VALUES (22, 11);
+INSERT INTO TAKE CARE (PID, SID) VALUES (19, 15);
+INSERT INTO TAKE CARE (PID, SID) VALUES (9, 14);
+INSERT INTO TAKE CARE (PID, SID) VALUES (32, 13);
+INSERT INTO TAKE CARE (PID, SID) VALUES (16, 11);
+INSERT INTO TAKE CARE (PID, SID) VALUES (3, 12);
+INSERT INTO TAKE CARE (PID, SID) VALUES (21, 14);
+INSERT INTO TAKE CARE (PID, SID) VALUES (26, 15);
+INSERT INTO TAKE CARE (PID, SID) VALUES (4, 13);
+
+-- handle --------------------------------------------------
+INSERT INTO HANDLE (SID, PID) VALUES (5, 34);
+INSERT INTO HANDLE (SID, PID) VALUES (7, 30);
+INSERT INTO HANDLE (SID, PID) VALUES (10, 3);
+INSERT INTO HANDLE (SID, PID) VALUES (7, 10);
+INSERT INTO HANDLE (SID, PID) VALUES (8, 29);
+INSERT INTO HANDLE (SID, PID) VALUES (1, 19);
+INSERT INTO HANDLE (SID, PID) VALUES (5, 9);
+INSERT INTO HANDLE (SID, PID) VALUES (4, 6);
+INSERT INTO HANDLE (SID, PID) VALUES (6, 25);
+INSERT INTO HANDLE (SID, PID) VALUES (2, 21);
+INSERT INTO HANDLE (SID, PID) VALUES (7, 14);
+INSERT INTO HANDLE (SID, PID) VALUES (2, 11);
+INSERT INTO HANDLE (SID, PID) VALUES (3, 29);
+INSERT INTO HANDLE (SID, PID) VALUES (6, 35);
+INSERT INTO HANDLE (SID, PID) VALUES (4, 26);
+INSERT INTO HANDLE (SID, PID) VALUES (5, 27);
+INSERT INTO HANDLE (SID, PID) VALUES (1, 30);
+INSERT INTO HANDLE (SID, PID) VALUES (3, 11);
+INSERT INTO HANDLE (SID, PID) VALUES (7, 26);
+INSERT INTO HANDLE (SID, PID) VALUES (9, 12);
+INSERT INTO HANDLE (SID, PID) VALUES (2, 31);
+INSERT INTO HANDLE (SID, PID) VALUES (10, 19);
+INSERT INTO HANDLE (SID, PID) VALUES (6, 25);
+INSERT INTO HANDLE (SID, PID) VALUES (4, 30);
+INSERT INTO HANDLE (SID, PID) VALUES (8, 12);

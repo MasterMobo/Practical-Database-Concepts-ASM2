@@ -93,28 +93,33 @@ CREATE TABLE ICU(
 -- INCREMENT BY 1;
 
 CREATE TABLE BILL (
-	bID INT DEFAULT bill_seq.NEXTVAL,
-    pID INT,
+    bID INT DEFAULT bill_seq.NEXTVAL,
+    pID INT NOT NULL,
+    patient_name VARCHAR(50) NOT NULL,
     duration INT NOT NULL,
     due_day DATE NOT NULL,
     price INT NOT NULL,
-    paid VARCHAR(20) NOT NULL DEFAULT 'no' CONSTRAINT paid_check CHECK (paid IN ('yes', 'no')),
+    paid VARCHAR(20) DEFAULT 'no' CONSTRAINT paid_check CHECK (paid IN ('yes', 'no')),
     PRIMARY KEY (bID),
     FOREIGN KEY (pID) REFERENCES PATIENT(pID)
 );
 
 -- RELATIONSHIPS -----------------------------------------------------------------
 CREATE TABLE HANDLE (
-	sID INT,
-    pID INT,
+	sID INT NOT NULL,
+    doctor_name VARCHAR(50) NOT NULL,
+    pID INT NOT NULL,
+    patient_name VARCHAR(50) NOT NULL,
     PRIMARY KEY (sID, pID),
     FOREIGN KEY (sID) REFERENCES DOCTOR(sID),
 	FOREIGN KEY (pID) REFERENCES PATIENT(pID)
 );
 
 CREATE TABLE ADMITTED_TO (
-	rID INT,
-    pID INT,
+	rID INT NOT NULL,
+    room_name VARCHAR(50) NOT NULL,
+    pID INT NOT NULL,
+    patient_name VARCHAR(50) NOT NULL,
     bID INT DEFAULT bill_seq.NEXTVAL,
     PRIMARY KEY (rID, pID, bID),
 	FOREIGN KEY (rID) REFERENCES ROOM(rID),
@@ -124,16 +129,20 @@ CREATE TABLE ADMITTED_TO (
 );
 
 CREATE TABLE MAINTAIN (
-	rID INT UNIQUE NOT NULL,
-    sID INT UNIQUE NOT NULL,
+	rID INT NOT NULL,
+    room_name VARCHAR(50) NOT NULL,
+    sID INT NOT NULL,
+    ward_boy_name VARCHAR(50) NOT NULL,
     PRIMARY KEY (rID, sID),
     FOREIGN KEY (rID) REFERENCES ROOM(rID),
     FOREIGN KEY (sID) REFERENCES STAFF(sID)
 );
 
 CREATE TABLE TAKE_CARE (
-	pID INT UNIQUE NOT NULL,
-    sID INT UNIQUE NOT NULL,
+	pID INT NOT NULL,
+    patient_name VARCHAR(50) NOT NULL,
+    sID INT NOT NULL,
+    nurse_name VARCHAR(50) NOT NULL,
     PRIMARY KEY (pID, sID),
     FOREIGN KEY (pID) REFERENCES PATIENT(pID),
     FOREIGN KEY (sID) REFERENCES STAFF(sID)
@@ -141,24 +150,14 @@ CREATE TABLE TAKE_CARE (
 
 -- TRIGGERS -----------------------------------------------------------------
 
-CREATE OR REPLACE TRIGGER insert_bill
-AFTER INSERT ON ADMITTED_TO
+create or replace TRIGGER insert_bill
+AFTER INSERT ON PATIENT
 FOR EACH ROW
-DECLARE
-    v_duration NUMBER;
-    v_price NUMBER;
-    v_day_in DATE;
-    v_day_out DATE;
 BEGIN
-    SELECT day_in, day_out INTO v_day_in, v_day_out FROM PATIENT WHERE pID = :NEW.pID;
-    v_duration := (v_day_out - v_day_in);
-    v_price := v_duration * 60;
-
-    INSERT INTO BILL (bID, pID, duration, due_day, price)
-    VALUES (:NEW.bID, :NEW.pID, v_duration, v_day_out + 7, v_price);
+  INSERT INTO BILL (bID, pID, patient_name, duration, due_day, price, paid)
+  VALUES (bill_seq.NEXTVAL, :NEW.pID, :NEW.name, (:NEW.day_out - :NEW.day_in), :NEW.day_out + 7, (:NEW.day_out - :NEW.day_in) * 60, 'no');
 END;
 /
-
 
 create or replace TRIGGER insert_doctor
 AFTER INSERT ON DOCTOR
@@ -211,5 +210,61 @@ FOR EACH ROW
 BEGIN
   INSERT INTO ROOM (rID, name, capacity, availability)
   VALUES (:NEW.rID, :NEW.name, :NEW.capacity, :NEW.availability);
+END;
+/
+
+CREATE OR REPLACE TRIGGER insert_take_care
+BEFORE INSERT ON TAKE_CARE
+FOR EACH ROW
+DECLARE
+  patient_name VARCHAR(50);
+  nurse_name VARCHAR(50);
+BEGIN
+  SELECT name INTO patient_name FROM PATIENT WHERE pID = :NEW.pID;
+  SELECT name INTO nurse_name FROM STAFF WHERE sID = :NEW.sID;
+  :NEW.patient_name := patient_name;
+  :NEW.nurse_name := nurse_name;
+END;
+/
+
+CREATE OR REPLACE TRIGGER insert_handle
+BEFORE INSERT ON HANDLE
+FOR EACH ROW
+DECLARE
+  doctor_name VARCHAR(50);
+  patient_name VARCHAR(50);
+BEGIN
+  SELECT name INTO patient_name FROM PATIENT WHERE pID = :NEW.pID;
+  SELECT name INTO doctor_name FROM DOCTOR WHERE sID = :NEW.sID;
+  :NEW.patient_name := patient_name;
+  :NEW.doctor_name := doctor_name;
+END;
+/
+
+CREATE OR REPLACE TRIGGER insert_admitted_to
+BEFORE INSERT ON ADMITTED_TO
+FOR EACH ROW
+DECLARE
+  room_name VARCHAR(50);
+  patient_name VARCHAR(50);
+BEGIN
+  SELECT name INTO patient_name FROM PATIENT WHERE pID = :NEW.pID;
+  SELECT name INTO room_name FROM ROOM WHERE rID = :NEW.rID;
+  :NEW.patient_name := patient_name;
+  :NEW.room_name := room_name;
+END;
+/
+
+CREATE OR REPLACE TRIGGER insert_maintain
+BEFORE INSERT ON MAINTAIN
+FOR EACH ROW
+DECLARE
+  room_name VARCHAR(50);
+  ward_boy_name VARCHAR(50);
+BEGIN
+  SELECT name INTO ward_boy_name FROM STAFF WHERE sID = :NEW.sID;
+  SELECT name INTO room_name FROM ROOM WHERE rID = :NEW.rID;
+  :NEW.ward_boy_name := ward_boy_name;
+  :NEW.room_name := room_name;
 END;
 /
