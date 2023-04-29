@@ -112,25 +112,6 @@ CREATE TABLE ADMITTED_TO (
     FOREIGN KEY (bID) REFERENCES BILL(bID)
 );
 
--- CREATE OR REPLACE TRIGGER insert_bill
--- AFTER INSERT ON ADMITTED_TO
--- FOR EACH ROW
--- DECLARE
---     v_duration NUMBER;
---     v_price NUMBER;
---     v_day_in DATE;
---     v_day_out DATE;
--- BEGIN
---     SELECT day_in, day_out INTO v_day_in, v_day_out FROM PATIENT WHERE pID = :NEW.pID;
---     v_duration := (v_day_out - v_day_in);
---     v_price := v_duration * 60;
-
---     INSERT INTO BILL (bID, pID, duration, due_day, price)
---     VALUES (bill_seq.nextval, :NEW.pID, v_duration, v_day_out + 7, v_price);
--- END;
-
--- NEDD TO ADD MAINTAIN AND TAKE_CARE
-
 CREATE TABLE MAINTAIN (
 	rID INT UNIQUE NOT NULL,
     sID INT UNIQUE NOT NULL,

@@ -106,3 +106,37 @@ VALUES (35, 'Benjamin Franklin', TO_DATE('1975-12-20', 'YYYY-MM-DD'), 4567890123
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
 VALUES (36, 'Catherine Lee', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 5678901234, '234 Pine St', 'Brain Injury', 'ICU', TO_DATE('2023-04-15', 'YYYY-MM-DD'), TO_DATE('2023-04-30', 'YYYY-MM-DD'));
+
+-- DOCTORS --------------------------------------------------------------------------
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (1, 'John Smith', TO_DATE('1985-01-01', 'YYYY-MM-DD'), 1234567890, 'Cardiology');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (2, 'Sarah Johnson', TO_DATE('1992-12-25', 'YYYY-MM-DD'), 2345678901, 'Pediatrics');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (3, 'Michael Brown', TO_DATE('1992-12-25', 'YYYY-MM-DD'), 3456789012, 'Oncology');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (4, 'Emily Davis', TO_DATE('1985-07-21', 'YYYY-MM-DD'), 4567890123, 'Psychiatry');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (5, 'William Martinez', TO_DATE('1989-02-25', 'YYYY-MM-DD'), 5678901234, 'Neurology');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (6, 'Grace Thompson', TO_DATE('1994-05-03', 'YYYY-MM-DD'), 6789012345, 'Dermatology');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (7, 'Robert Taylor', TO_DATE('1985-01-01', 'YYYY-MM-DD'), 7890123456, 'Endocrinology');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (8, 'Alexis Hernandez', TO_DATE('1990-04-10', 'YYYY-MM-DD'), 8901234567, 'Gynecology');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (9, 'Oliver Wilson', TO_DATE('1994-05-03', 'YYYY-MM-DD'), 9012345678, 'Cardiology');
+
+INSERT INTO DOCTOR (sID, name, birth_day, phone, specialty)
+VALUES (10, 'Evelyn Lee', TO_DATE('1980-05-30', 'YYYY-MM-DD'), 1234509876, 'Ophthalmology');
+
+-- NURSES --------------------------------------------------------------------------
