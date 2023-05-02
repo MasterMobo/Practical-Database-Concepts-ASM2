@@ -1,3 +1,289 @@
+-- This file creates the tables and relationships for the hospital database.
+-- IMPORTANT: Run the following file as a script under SQL Workshop > SQL Scripts in Oracle APEX. Any other platform may be subject to errors.
+
+-- Create Tables -----------------------------------------------------------------------------------------------------------------
+CREATE TABLE PATIENT (
+	pID INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    birth_day DATE,
+    phone INTEGER,
+    address VARCHAR(100),
+    disease VARCHAR(100) NOT NULL,
+    treatment VARCHAR(100) NOT NULL,
+    day_in DATE NOT NULL,
+    day_out DATE NOT NULL,
+    PRIMARY KEY (pID)
+);
+
+CREATE TABLE STAFF (
+	sID INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+	birth_day DATE,
+    phone INTEGER,
+    PRIMARY KEY (sID)
+);
+
+CREATE TABLE DOCTOR (
+	sID INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+	birth_day DATE,
+    phone INTEGER,
+    specialty VARCHAR(50),
+    PRIMARY KEY (sID),
+    FOREIGN KEY (sID) REFERENCES STAFF(sID)
+);
+
+CREATE TABLE NURSE (
+	sID INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+	birth_day DATE,
+    phone INTEGER,
+    shift VARCHAR(20) NOT NULL CONSTRAINT shift_check CHECK (shift IN ('Morning', 'Evening', 'Night')),
+
+    PRIMARY KEY (sID),
+    FOREIGN KEY (sID) REFERENCES STAFF(sID)
+);
+
+CREATE TABLE WARD_BOY (
+	sID INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+	birth_day DATE,
+    phone INTEGER,
+    duty VARCHAR(50),
+    PRIMARY KEY (sID),
+    FOREIGN KEY (sID) REFERENCES STAFF(sID)
+);
+
+CREATE TABLE ROOM (
+    rID INT,
+    name VARCHAR(50),
+    capacity INT,
+    availability VARCHAR(20) NOT NULL CONSTRAINT availability_check CHECK (availability IN ('available', 'unavailable')),
+    PRIMARY KEY (rID)
+);
+
+CREATE TABLE CLINICAL_LAB(
+    rID INT,
+    name VARCHAR(50),
+    capacity INT,
+    availability VARCHAR(20) NOT NULL CONSTRAINT availability_check1 CHECK (availability IN ('available', 'unavailable')),  
+    lab_type VARCHAR(50),
+    PRIMARY KEY (rID),
+    FOREIGN KEY (rID) REFERENCES ROOM(rID)
+);
+
+CREATE TABLE OPERATION_THEATER(
+    rID INT,
+    name VARCHAR(50),
+    capacity INT,
+    availability VARCHAR(20) NOT NULL CONSTRAINT availability_check2 CHECK (availability IN ('available', 'unavailable')), 
+    op_type VARCHAR(50),
+    PRIMARY KEY (rID),
+    FOREIGN KEY (rID) REFERENCES ROOM(rID)
+);
+
+CREATE TABLE ICU(
+    rID INT,
+    name VARCHAR(50),
+    capacity INT,
+    availability VARCHAR(20) NOT NULL CONSTRAINT availability_check3 CHECK (availability IN ('available', 'unavailable')),  
+    icu_type VARCHAR(50),
+    PRIMARY KEY (rID),
+    FOREIGN KEY (rID) REFERENCES ROOM(rID)
+);
+
+-- Sequence for the BILL table (auto-incrementing primary key)
+CREATE SEQUENCE bill_seq
+START WITH 1
+INCREMENT BY 1;
+
+-- The BILL table is automatically populated by a trigger when a new patient is inserted into the PATIENT table
+CREATE TABLE BILL (
+    bID INT DEFAULT bill_seq.NEXTVAL,
+    pID INT NOT NULL,
+    patient_name VARCHAR(50) NOT NULL,
+    duration INT NOT NULL,
+    due_day DATE NOT NULL,
+    price INT NOT NULL,
+    paid VARCHAR(20) DEFAULT 'no' CONSTRAINT paid_check CHECK (paid IN ('yes', 'no')),
+    PRIMARY KEY (bID),
+    FOREIGN KEY (pID) REFERENCES PATIENT(pID)
+);
+
+-- RELATIONSHIPS -----------------------------------------------------------------
+CREATE TABLE HANDLE (
+	sID INT NOT NULL,
+    doctor_name VARCHAR(50) NOT NULL,
+    pID INT NOT NULL,
+    patient_name VARCHAR(50) NOT NULL,
+    PRIMARY KEY (sID, pID),
+    FOREIGN KEY (sID) REFERENCES DOCTOR(sID),
+	FOREIGN KEY (pID) REFERENCES PATIENT(pID)
+);
+
+CREATE TABLE ADMITTED_TO (
+	rID INT NOT NULL,
+    room_name VARCHAR(50) NOT NULL,
+    pID INT NOT NULL,
+    patient_name VARCHAR(50) NOT NULL,
+    PRIMARY KEY (rID, pID),
+	FOREIGN KEY (rID) REFERENCES ROOM(rID),
+	FOREIGN KEY (pID) REFERENCES PATIENT(pID)
+);
+
+CREATE TABLE MAINTAIN (
+	rID INT NOT NULL,
+    room_name VARCHAR(50) NOT NULL,
+    sID INT NOT NULL,
+    ward_boy_name VARCHAR(50) NOT NULL,
+    PRIMARY KEY (rID, sID),
+    FOREIGN KEY (rID) REFERENCES ROOM(rID),
+    FOREIGN KEY (sID) REFERENCES STAFF(sID)
+);
+
+CREATE TABLE TAKE_CARE (
+	pID INT NOT NULL,
+    patient_name VARCHAR(50) NOT NULL,
+    sID INT NOT NULL,
+    nurse_name VARCHAR(50) NOT NULL,
+    PRIMARY KEY (pID, sID),
+    FOREIGN KEY (pID) REFERENCES PATIENT(pID),
+    FOREIGN KEY (sID) REFERENCES STAFF(sID)
+);
+
+-- TRIGGERS -----------------------------------------------------------------
+
+-- This trigger inserts a new row into the BILL table when a new patient is inserted into the PATIENT table
+create or replace TRIGGER insert_bill
+AFTER INSERT ON PATIENT
+FOR EACH ROW
+BEGIN
+  INSERT INTO BILL (bID, pID, patient_name, duration, due_day, price, paid)
+  VALUES (bill_seq.NEXTVAL, :NEW.pID, :NEW.name, (:NEW.day_out - :NEW.day_in), :NEW.day_out + 7, (:NEW.day_out - :NEW.day_in) * 60, 'no');
+END;
+/
+
+-- This trigger inserts a new row into the STAFF table when a new doctor is inserted into the DOCTOR table
+create or replace TRIGGER insert_doctor
+AFTER INSERT ON DOCTOR
+FOR EACH ROW
+BEGIN
+  INSERT INTO STAFF (sID, name, birth_day, phone)
+  VALUES (:NEW.sID, :NEW.name, :NEW.birth_day, :NEW.phone);
+END;
+/
+
+-- This trigger inserts a new row into the STAFF table when a new nurse is inserted into the NURSE table
+create or replace TRIGGER insert_nurse
+AFTER INSERT ON NURSE
+FOR EACH ROW
+BEGIN
+  INSERT INTO STAFF (sID, name, birth_day, phone)
+  VALUES (:NEW.sID, :NEW.name, :NEW.birth_day, :NEW.phone);
+END;
+/
+
+-- This trigger inserts a new row into the STAFF table when a new wardboy is inserted into the WARD_BOY table
+create or replace TRIGGER insert_wardboy
+AFTER INSERT ON WARD_BOY
+FOR EACH ROW
+BEGIN
+  INSERT INTO STAFF (sID, name, birth_day, phone)
+  VALUES (:NEW.sID, :NEW.name, :NEW.birth_day, :NEW.phone);
+END;
+/
+
+-- This trigger inserts a new row into the ROOM table when a new lab is inserted into the CLINICAL_LAB table
+create or replace TRIGGER insert_lab
+AFTER INSERT ON CLINICAL_LAB
+FOR EACH ROW
+BEGIN
+  INSERT INTO ROOM (rID, name, capacity, availability)
+  VALUES (:NEW.rID, :NEW.name, :NEW.capacity, :NEW.availability);
+END;
+/
+
+-- This trigger inserts a new row into the ROOM table when a new operation theater is inserted into the OPERATION_THEATER table
+create or replace TRIGGER insert_op
+AFTER INSERT ON OPERATION_THEATER
+FOR EACH ROW
+BEGIN
+  INSERT INTO ROOM (rID, name, capacity, availability)
+  VALUES (:NEW.rID, :NEW.name, :NEW.capacity, :NEW.availability);
+END;
+/
+
+-- This trigger inserts a new row into the ROOM table when a new ICU is inserted into the ICU table
+create or replace TRIGGER insert_icu
+AFTER INSERT ON ICU
+FOR EACH ROW
+BEGIN
+  INSERT INTO ROOM (rID, name, capacity, availability)
+  VALUES (:NEW.rID, :NEW.name, :NEW.capacity, :NEW.availability);
+END;
+/
+
+-- This trigger set the patient_name and nurse_name attributes of the TAKE_CARE table when a new row is inserted
+CREATE OR REPLACE TRIGGER insert_take_care
+BEFORE INSERT ON TAKE_CARE
+FOR EACH ROW
+DECLARE
+  patient_name VARCHAR(50);
+  nurse_name VARCHAR(50);
+BEGIN
+  SELECT name INTO patient_name FROM PATIENT WHERE pID = :NEW.pID;
+  SELECT name INTO nurse_name FROM STAFF WHERE sID = :NEW.sID;
+  :NEW.patient_name := patient_name;
+  :NEW.nurse_name := nurse_name;
+END;
+/
+
+-- This trigger set the patient_name and doctor_name attributes of the HANDLE table when a new row is inserted
+CREATE OR REPLACE TRIGGER insert_handle
+BEFORE INSERT ON HANDLE
+FOR EACH ROW
+DECLARE
+  doctor_name VARCHAR(50);
+  patient_name VARCHAR(50);
+BEGIN
+  SELECT name INTO patient_name FROM PATIENT WHERE pID = :NEW.pID;
+  SELECT name INTO doctor_name FROM DOCTOR WHERE sID = :NEW.sID;
+  :NEW.patient_name := patient_name;
+  :NEW.doctor_name := doctor_name;
+END;
+/
+
+-- This trigger set the patient_name and room_name attributes of the ADMITTED_TO table when a new row is inserted
+CREATE OR REPLACE TRIGGER insert_admitted_to
+BEFORE INSERT ON ADMITTED_TO
+FOR EACH ROW
+DECLARE
+  room_name VARCHAR(50);
+  patient_name VARCHAR(50);
+BEGIN
+  SELECT name INTO patient_name FROM PATIENT WHERE pID = :NEW.pID;
+  SELECT name INTO room_name FROM ROOM WHERE rID = :NEW.rID;
+  :NEW.patient_name := patient_name;
+  :NEW.room_name := room_name;
+END;
+/
+
+-- This trigger set the ward_boy_name and room_name attributes of the MAINTAIN table when a new row is inserted
+CREATE OR REPLACE TRIGGER insert_maintain
+BEFORE INSERT ON MAINTAIN
+FOR EACH ROW
+DECLARE
+  room_name VARCHAR(50);
+  ward_boy_name VARCHAR(50);
+BEGIN
+  SELECT name INTO ward_boy_name FROM STAFF WHERE sID = :NEW.sID;
+  SELECT name INTO room_name FROM ROOM WHERE rID = :NEW.rID;
+  :NEW.ward_boy_name := ward_boy_name;
+  :NEW.room_name := room_name;
+END;
+/
+
+-- Populate Tables -----------------------------------------------------------------
 -- PATIENT ------------------------------------------------------------------------------------------------------------
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
 VALUES (1, 'John Smith', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 1234567890, '123 Main St', 'Flu', 'Antibiotics', TO_DATE('2023-03-01', 'YYYY-MM-DD'), TO_DATE('2023-03-05', 'YYYY-MM-DD'));
@@ -106,6 +392,36 @@ VALUES (35, 'Benjamin Franklin', TO_DATE('1975-12-20', 'YYYY-MM-DD'), 4567890123
 
 INSERT INTO PATIENT (pID, name, birth_day, phone, address, disease, treatment, day_in, day_out)
 VALUES (36, 'Catherine Lee', TO_DATE('1985-02-10', 'YYYY-MM-DD'), 5678901234, '234 Pine St', 'Brain Injury', 'ICU', TO_DATE('2023-04-15', 'YYYY-MM-DD'), TO_DATE('2023-04-30', 'YYYY-MM-DD'));
+
+--Update BILL ----------------------------------------------------------------------
+
+UPDATE BILL SET paid = 'yes' WHERE pID = 1;
+UPDATE BILL SET paid = 'yes' WHERE pID = 2;
+UPDATE BILL SET paid = 'yes' WHERE pID = 3;
+UPDATE BILL SET paid = 'yes' WHERE pID = 6;
+UPDATE BILL SET paid = 'yes' WHERE pID = 7;
+UPDATE BILL SET paid = 'yes' WHERE pID = 8;
+UPDATE BILL SET paid = 'yes' WHERE pID = 10;
+UPDATE BILL SET paid = 'yes' WHERE pID = 11;
+UPDATE BILL SET paid = 'yes' WHERE pID = 12;
+UPDATE BILL SET paid = 'yes' WHERE pID = 15;
+UPDATE BILL SET paid = 'yes' WHERE pID = 16;
+UPDATE BILL SET paid = 'yes' WHERE pID = 17;
+UPDATE BILL SET paid = 'yes' WHERE pID = 18;
+UPDATE BILL SET paid = 'yes' WHERE pID = 19;
+UPDATE BILL SET paid = 'yes' WHERE pID = 22;
+UPDATE BILL SET paid = 'yes' WHERE pID = 21;
+UPDATE BILL SET paid = 'yes' WHERE pID = 23;
+UPDATE BILL SET paid = 'yes' WHERE pID = 24;
+UPDATE BILL SET paid = 'yes' WHERE pID = 25;
+UPDATE BILL SET paid = 'yes' WHERE pID = 30;
+UPDATE BILL SET paid = 'yes' WHERE pID = 31;
+UPDATE BILL SET paid = 'yes' WHERE pID = 32;
+UPDATE BILL SET paid = 'yes' WHERE pID = 33;
+UPDATE BILL SET paid = 'yes' WHERE pID = 34;
+UPDATE BILL SET paid = 'yes' WHERE pID = 35;
+
+
 
 -- DOCTORS --------------------------------------------------------------------------
 
@@ -331,7 +647,3 @@ INSERT INTO ADMITTED_TO (RID, PID) VALUES (302, 33);
 INSERT INTO ADMITTED_TO (RID, PID) VALUES (202, 34);
 INSERT INTO ADMITTED_TO (RID, PID) VALUES (201, 35);
 INSERT INTO ADMITTED_TO (RID, PID) VALUES (205, 36);
-
-
-
-

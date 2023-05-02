@@ -14,6 +14,7 @@ BEGIN
     INSERT INTO BILL (bID, pID, duration, due_day, price)
     VALUES (bill_seq.nextval, :NEW.pID, v_duration, v_day_out + 7, v_price);
 END;
+/
 
 
 create or replace TRIGGER insert_doctor
@@ -23,6 +24,7 @@ BEGIN
   INSERT INTO STAFF (sID, name, birth_day, phone)
   VALUES (:NEW.sID, :NEW.name, :NEW.birth_day, :NEW.phone);
 END;
+/
 
 create or replace TRIGGER insert_nurse
 AFTER INSERT ON NURSE
@@ -31,6 +33,7 @@ BEGIN
   INSERT INTO STAFF (sID, name, birth_day, phone)
   VALUES (:NEW.sID, :NEW.name, :NEW.birth_day, :NEW.phone);
 END;
+/
 
 create or replace TRIGGER insert_wardboy
 AFTER INSERT ON WARD_BOY
@@ -39,3 +42,4 @@ BEGIN
   INSERT INTO STAFF (sID, name, birth_day, phone)
   VALUES (:NEW.sID, :NEW.name, :NEW.birth_day, :NEW.phone);
 END;
+/
